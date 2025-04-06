@@ -24,6 +24,6 @@ public class MyException {
      * @param msg the detail message.
      */
     public MyException(String msg) {
-        super(msg);
+        //super(msg);
     }
 }
