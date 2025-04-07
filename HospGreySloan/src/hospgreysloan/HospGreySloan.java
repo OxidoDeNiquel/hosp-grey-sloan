@@ -4,6 +4,8 @@
  */
 package hospgreysloan;
 
+import interfaces.MenuHospital;
+
 /**
  *
  * @author niobeclaveria
@@ -15,6 +17,10 @@ public class HospGreySloan {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        MenuHospital mh = new MenuHospital();
+        mh.setVisible(true);
+        mh.setLocationRelativeTo(null);
     }
     
 }
