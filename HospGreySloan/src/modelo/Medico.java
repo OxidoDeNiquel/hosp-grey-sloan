@@ -10,8 +10,25 @@ package modelo;
  */
 public class Medico extends Usuario{
     
-    public Medico(int id, String nombre) {
-        super(id, nombre);
+    private String especialidad;
+    
+    public Medico(int id, String nombre, String apellido, String especialidad) {
+        super(id, nombre, apellido);
+        
+        this.especialidad = especialidad;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    @Override
+    public String toString() {
+        return "Medico:\n" + "Especialidad=" + especialidad;
     }
     
 }
