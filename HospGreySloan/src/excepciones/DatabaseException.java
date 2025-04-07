@@ -8,22 +8,22 @@ package excepciones;
  *
  * @author niobeclaveria
  */
-public class EstadoException extends Exception{
+public class DatabaseException extends Exception{
 
     /**
-     * Creates a new instance of <code>EstadoException</code> without detail
+     * Creates a new instance of <code>DatabaseExcepcion</code> without detail
      * message.
      */
-    public EstadoException() {
+    public DatabaseException() {
     }
 
     /**
-     * Constructs an instance of <code>EstadoException</code> with the specified
-     * detail message.
+     * Constructs an instance of <code>DatabaseExcepcion</code> with the
+     * specified detail message.
      *
      * @param msg the detail message.
      */
-    public EstadoException(String msg) {
+    public DatabaseException(String msg) {
         super(msg);
     }
 }

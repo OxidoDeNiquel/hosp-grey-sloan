@@ -8,7 +8,7 @@ package excepciones;
  *
  * @author niobeclaveria
  */
-public class MyException {
+public class MyException extends Exception{
 
     /**
      * Creates a new instance of <code>MyException</code> without detail
@@ -24,6 +24,6 @@ public class MyException {
      * @param msg the detail message.
      */
     public MyException(String msg) {
-        //super(msg);
+        super(msg);
     }
 }
