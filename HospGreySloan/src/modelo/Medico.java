@@ -28,7 +28,7 @@ public class Medico extends Usuario{
 
     @Override
     public String toString() {
-        return "Medico:\n" + "Especialidad=" + especialidad;
+        return "Medico:\n"+ "Nombre=" + this.getNombre() + "\nApellido=" + this.getApellido() + "Especialidad=" + especialidad;
     }
     
 }
