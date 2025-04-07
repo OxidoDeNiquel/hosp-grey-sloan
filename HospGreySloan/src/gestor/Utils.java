@@ -5,6 +5,7 @@
 package gestor;
 
 import excepciones.DatabaseException;
+import interfaces.MenuHospital;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -57,6 +58,12 @@ public class Utils {
             throw new DatabaseException(ex.getSQLState() + " no se ha podido cerrar la base de datos, posible perdida de informacion");
 
         }
+    }
+    
+    private void volverAlMenu(Utils miConexion){
+        MenuHospital mh = new MenuHospital(miConexion);
+        mh.setVisible(true);
+        mh.setLocationRelativeTo(null);
     }
     
 }

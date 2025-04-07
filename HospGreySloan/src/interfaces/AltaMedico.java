@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import gestor.Utils;
+
 /**
  *
  * @author niobeclaveria
@@ -13,7 +15,13 @@ public class AltaMedico extends javax.swing.JFrame {
     /**
      * Creates new form AltaMedico
      */
-    public AltaMedico() {
+    
+    
+    Utils miConexion;
+    
+    public AltaMedico(Utils gestor) {
+        this.miConexion = gestor;
+        
         initComponents();
     }
 
@@ -26,21 +34,93 @@ public class AltaMedico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldApellido = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldEdad = new javax.swing.JTextField();
+        jButtonVolver = new javax.swing.JButton();
+        jButtonCrear = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelTitulo.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelTitulo.setText("Alta Médico");
+
+        jLabelNombre.setText("Nombre");
+
+        jLabel1.setText("Apellido");
+
+        jLabel2.setText("Especialidad");
+
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
+        jButtonCrear.setText("Crear");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jButtonVolver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)))
+                        .addComponent(jButtonCrear)
+                        .addGap(63, 63, 63))
+                    .addComponent(jTextFieldEdad, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabelTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonCrear))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +152,20 @@ public class AltaMedico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AltaMedico().setVisible(true);
+                //new AltaMedico().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCrear;
+    private javax.swing.JButton jButtonVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JTextField jTextFieldApellido;
+    private javax.swing.JTextField jTextFieldEdad;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

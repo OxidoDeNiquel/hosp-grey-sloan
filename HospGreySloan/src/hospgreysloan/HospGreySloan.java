@@ -4,6 +4,7 @@
  */
 package hospgreysloan;
 
+import gestor.Utils;
 import interfaces.MenuHospital;
 
 /**
@@ -17,8 +18,8 @@ public class HospGreySloan {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        MenuHospital mh = new MenuHospital();
+        Utils miConexion = new Utils("", "", "", "");
+        MenuHospital mh = new MenuHospital(miConexion);
         mh.setVisible(true);
         mh.setLocationRelativeTo(null);
     }

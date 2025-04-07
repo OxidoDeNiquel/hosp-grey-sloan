@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import gestor.Utils;
+
 /**
  *
  * @author niobeclaveria
@@ -13,7 +15,13 @@ public class MenuHospital extends javax.swing.JFrame {
     /**
      * Creates new form MenuHospital
      */
-    public MenuHospital() {
+    
+    Utils miConexion;
+    
+    public MenuHospital(Utils gestor) {
+        
+        this.miConexion = gestor;
+        
         initComponents();
     }
 
@@ -27,8 +35,8 @@ public class MenuHospital extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelTitulo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonDarAltaPaciente = new javax.swing.JButton();
+        jButtonDarAltaMedico = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,9 +45,19 @@ public class MenuHospital extends javax.swing.JFrame {
         jLabelTitulo.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabelTitulo.setText("HOSPITAL GREY SLOAN");
 
-        jButton1.setText("Dar de alta paciente");
+        jButtonDarAltaPaciente.setText("Dar de alta paciente");
+        jButtonDarAltaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDarAltaPacienteActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Dar de alta médico");
+        jButtonDarAltaMedico.setText("Dar de alta médico");
+        jButtonDarAltaMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDarAltaMedicoActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Nueva Consulta");
 
@@ -55,8 +73,8 @@ public class MenuHospital extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonDarAltaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonDarAltaMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
@@ -66,9 +84,9 @@ public class MenuHospital extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabelTitulo)
                 .addGap(40, 40, 40)
-                .addComponent(jButton1)
+                .addComponent(jButtonDarAltaPaciente)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jButtonDarAltaMedico)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addContainerGap(117, Short.MAX_VALUE))
@@ -76,6 +94,24 @@ public class MenuHospital extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonDarAltaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDarAltaPacienteActionPerformed
+        // TODO add your handling code here:
+        AltaPaciente ap = new AltaPaciente(miConexion);
+        ap.setVisible(true);
+        ap.setLocationRelativeTo(null);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButtonDarAltaPacienteActionPerformed
+
+    private void jButtonDarAltaMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDarAltaMedicoActionPerformed
+        // TODO add your handling code here:
+        AltaMedico am = new AltaMedico(miConexion);
+        am.setVisible(true);
+        am.setLocationRelativeTo(null);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButtonDarAltaMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,15 +143,15 @@ public class MenuHospital extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuHospital().setVisible(true);
+                //new MenuHospital().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonDarAltaMedico;
+    private javax.swing.JButton jButtonDarAltaPaciente;
     private javax.swing.JLabel jLabelTitulo;
     // End of variables declaration//GEN-END:variables
 }

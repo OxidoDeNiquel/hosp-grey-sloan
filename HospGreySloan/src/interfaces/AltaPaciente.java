@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import gestor.Utils;
+
 /**
  *
  * @author niobeclaveria
@@ -13,7 +15,12 @@ public class AltaPaciente extends javax.swing.JFrame {
     /**
      * Creates new form AltaPaciente
      */
-    public AltaPaciente() {
+    
+    Utils miConexion;
+    
+    public AltaPaciente(Utils gestor) {
+        this.miConexion = gestor;
+        
         initComponents();
     }
 
@@ -26,17 +33,86 @@ public class AltaPaciente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jButtonVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonCrear = new javax.swing.JButton();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldApellido = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldEdad = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelTitulo.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelTitulo.setText("Alta Paciente");
+
+        jLabelNombre.setText("Nombre");
+
+        jCheckBox1.setText("¿Estás asegurado?");
+
+        jButtonVolver.setText("Volver");
+
+        jLabel1.setText("Apellido");
+
+        jButtonCrear.setText("Crear");
+
+        jLabel2.setText("Edad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(129, 129, 129))
+                                .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jButtonVolver)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCrear)
+                            .addComponent(jCheckBox1))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabelTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonCrear))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,11 +148,21 @@ public class AltaPaciente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AltaPaciente().setVisible(true);
+                //new AltaPaciente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCrear;
+    private javax.swing.JButton jButtonVolver;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JTextField jTextFieldApellido;
+    private javax.swing.JTextField jTextFieldEdad;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
