@@ -60,7 +60,7 @@ public class Utils {
         }
     }
     
-    private void volverAlMenu(Utils miConexion){
+    public void volverAlMenu(Utils miConexion){
         MenuHospital mh = new MenuHospital(miConexion);
         mh.setVisible(true);
         mh.setLocationRelativeTo(null);
