@@ -26,6 +26,18 @@ public class Paciente extends Usuario{
         }
         
     }
+    
+    public Paciente(String nombre, String apellido, int edad, String estado){
+        super(nombre, apellido);
+        
+        this.edad = edad;
+        
+        //Nos aseguramos de que el estado sea el correcto
+        if(estado == "ASEGURADO" || estado == "NO_ASEGURADO"){            
+            this.estado = EstadoPaciente.valueOf(estado);            
+        }
+        
+    }
 
     public int getEdad() {
         return edad;
