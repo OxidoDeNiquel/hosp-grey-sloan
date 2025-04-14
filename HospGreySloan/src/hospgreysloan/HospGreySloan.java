@@ -18,7 +18,7 @@ public class HospGreySloan {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Utils miConexion = new Utils("", "", "", "");
+        Utils miConexion = new Utils("nio", "HospGreySloan", "jdbc:mysql://localhost:3306/", "nio");
         MenuHospital mh = new MenuHospital(miConexion);
         mh.setVisible(true);
         mh.setLocationRelativeTo(null);

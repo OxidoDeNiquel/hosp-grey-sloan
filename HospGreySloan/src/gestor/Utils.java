@@ -66,4 +66,10 @@ public class Utils {
         mh.setLocationRelativeTo(null);
     }
     
+    //MÉTODOS BBDD
+    
+    public void insertarPaciente(){
+        
+    }
+    
 }
