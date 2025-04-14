@@ -8,8 +8,11 @@ import excepciones.DatabaseException;
 import interfaces.MenuHospital;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.Paciente;
 import modelo.Usuario;
 
 /**
@@ -17,7 +20,7 @@ import modelo.Usuario;
  * @author niobeclaveria
  */
 public class Utils {
-    
+
     private String user;
     private String db;
     private String conexion;
@@ -59,11 +62,34 @@ public class Utils {
 
         }
     }
-    
-    private void volverAlMenu(Utils miConexion){
+
+    public void volverAlMenu(Utils miConexion) {
         MenuHospital mh = new MenuHospital(miConexion);
         mh.setVisible(true);
         mh.setLocationRelativeTo(null);
     }
-    
+
+    //MÉTODOS BBDD
+    public void insertarPaciente(Paciente p) throws SQLException {
+        PreparedStatement st = null;// Sentencia SQL con placeholders
+        
+        String sql = "INSERT INTO Pacientes (nombre, apellido, edad, estado_asegurado) VALUES (?, ?, ?, ?)";
+
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+        // Asignar valores a los placeholders
+        preparedStatement.setString(1, p.getNombre());
+        preparedStatement.setString(2, p.getApellido());
+        preparedStatement.setInt(3, p.getEdad());
+        preparedStatement.setString(4, p.getEstado().toString());
+
+        // Ejecutar la sentencia
+        int rowsInserted = preparedStatement.executeUpdate();
+
+        if (rowsInserted > 0) {
+            JOptionPane.showMessageDialog(null, "El paciente fue insertado con éxito.");
+        }
+
+    }
+
 }

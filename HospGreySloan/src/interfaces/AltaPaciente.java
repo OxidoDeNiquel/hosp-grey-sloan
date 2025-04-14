@@ -5,6 +5,12 @@
 package interfaces;
 
 import gestor.Utils;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.EstadoPaciente;
+import modelo.Paciente;
 
 /**
  *
@@ -15,12 +21,11 @@ public class AltaPaciente extends javax.swing.JFrame {
     /**
      * Creates new form AltaPaciente
      */
-    
     Utils miConexion;
-    
+
     public AltaPaciente(Utils gestor) {
         this.miConexion = gestor;
-        
+
         initComponents();
     }
 
@@ -35,7 +40,7 @@ public class AltaPaciente extends javax.swing.JFrame {
 
         jLabelTitulo = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBoxAsegurado = new javax.swing.JCheckBox();
         jButtonVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonCrear = new javax.swing.JButton();
@@ -51,13 +56,18 @@ public class AltaPaciente extends javax.swing.JFrame {
 
         jLabelNombre.setText("Nombre");
 
-        jCheckBox1.setText("¿Estás asegurado?");
+        jCheckBoxAsegurado.setText("¿Estás asegurado?");
 
         jButtonVolver.setText("Volver");
 
         jLabel1.setText("Apellido");
 
         jButtonCrear.setText("Crear");
+        jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Edad");
 
@@ -86,7 +96,7 @@ public class AltaPaciente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonCrear)
-                            .addComponent(jCheckBox1))))
+                            .addComponent(jCheckBoxAsegurado))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,7 +117,7 @@ public class AltaPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jCheckBoxAsegurado))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
@@ -117,6 +127,44 @@ public class AltaPaciente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+        String nombre = jTextFieldNombre.getText();
+        String apellido = jTextFieldApellido.getText();
+        String edadSinFormatear = jTextFieldEdad.getText();
+        boolean isAsegurado = jCheckBoxAsegurado.isEnabled();
+        
+        //COMPROBACIÓN PREVIA: Edad es un número
+        if (!edadSinFormatear.matches("^\\d{1,3}$")) {
+            JOptionPane.showMessageDialog(null, "ERROR: La edad NO es un número válido de hasta 3 dígitos.");
+            return;
+        }
+
+        int edad = Integer.parseInt(edadSinFormatear);
+
+        String asegurado;
+        
+        //COMPROBACIÓN PREVIA: Está asegurado?¿
+        if (isAsegurado) {
+            asegurado = EstadoPaciente.ASEGURADO.toString();
+        } else {
+            asegurado = EstadoPaciente.NO_ASEGURADO.toString();
+        }
+
+        if (asegurado != null) {
+            Paciente p = new Paciente(nombre, apellido, edad, asegurado);
+            try {
+                miConexion.insertarPaciente(p);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR SQL: " + ex.getSQLState());
+            }
+        }
+        
+        miConexion.volverAlMenu(miConexion);
+        
+        this.dispose();
+
+    }//GEN-LAST:event_jButtonCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +204,7 @@ public class AltaPaciente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrear;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBoxAsegurado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelNombre;

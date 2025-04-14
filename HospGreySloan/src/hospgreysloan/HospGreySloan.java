@@ -4,8 +4,12 @@
  */
 package hospgreysloan;
 
+import excepciones.DatabaseException;
 import gestor.Utils;
 import interfaces.MenuHospital;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +21,19 @@ public class HospGreySloan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Utils miConexion = new Utils("", "", "", "");
-        MenuHospital mh = new MenuHospital(miConexion);
-        mh.setVisible(true);
-        mh.setLocationRelativeTo(null);
+        try {
+            // TODO code application logic here
+            Utils miConexion = new Utils("nio", "HospGreySloan", "jdbc:mysql://localhost:3306/", "nio");
+            
+            miConexion.initDataBase();
+            
+            MenuHospital mh = new MenuHospital(miConexion);
+            mh.setVisible(true);
+            mh.setLocationRelativeTo(null);
+            
+        } catch (DatabaseException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage());
+        }
     }
     
 }
